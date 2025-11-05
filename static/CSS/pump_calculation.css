@@ -1,0 +1,49 @@
+/* ---------- Base Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  height: clamp(60px, 8vw, 80px);
+}
+
+#sign-out-btn {
+  background-color: #3ea748;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#sign-out-btn:hover {
+  background-color: #2f8d3a;
+  transform: scale(1.05);
+}
+
+section {
+  background-image: url("/static/images/top-image.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}

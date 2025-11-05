@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Animation</title>
+    <link rel="stylesheet" href="/static/CSS/formulas.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-section">
+            <img src="\static\images\final_logo.png" class="logo">
+            <button id="sign-out-btn">Sign Out</button>
+        </div>
+        <video class="bg-video" src="/static/images/istockphoto-2173646805-640_adpp_is.mp4" autoplay muted loop></video>
+        <div class="layer"></div>
+        <div class="heading">
+            <div>
+                <h1>HVAC Calculation Suite</h1>
+                <p>Select a module to perform detailed calculations for hydronic systems,
+                    air systems, or fundamental pump and fan laws.</p>
+            </div>
+        </div>
+    </nav>
+    <main class="lower-section">
+        <div class="container">
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\Instrument Tracker.png" alt="">
+                <div>
+                    <h3>Instrument Tracking and Calibration</h3>
+                    <p>This Card allows you to monitor the real-time status of each instrument, including its current
+                        site location and calibration due dates. Easily access and download calibration certificates
+                        directly from the platform</p>
+                    <a href="{{ url_for('instrument_tracking') }}">
+                        <button class="learn-btn" id="instrument-tacking">Learn More</button>
+                    </a>
+                    
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img"
+                    src="\static\images\air and velocity.webp"
+                    alt="">
+                <div>
+                    <h3>Airflow & Velocity Equations</h3>
+                    <p>This card provides a quick and easy way to access a comprehensive set of formulas for calculating
+                        airflow and velocity in both US and Metric units. Tap to view detailed equations for total
+                        pressure, velocity pressure.</p>
+                    <button class="learn-btn" id="air-velocity">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\Air temperature measurements.png" alt="">
+                <div>
+                    <h3>Air Temperature Calculations</h3>
+                    <p>Quickly calculate mixed air properties and convert between Fahrenheit, Celsius, Rankine, and
+                        Kelvin using our intuitive tool.</p>
+                    <button class="learn-btn" id="air-temperature">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\air side heat transfer.jpeg" alt="">
+                <div>
+                    <h3>Air Side Heat Transfer Calculations</h3>
+                    <p>Calculate total, sensible, and latent heat, plus Sensible Heat Ratio (SHR). This tool simplifies
+                        heat transfer equations for quick and accurate results.</p>
+                    <button class="learn-btn" id="air-side-heat-transfer">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\fan laws.jpg" alt="">
+                <div>
+                    <h3>Fan Calculations & Laws</h3>
+                    <p>Quickly calculate fan performance by applying the Fan Laws. Determine how changes in speed,
+                        airflow, or pressure affect a fan's horsepower to optimize system efficiency.</p>
+                    <button class="learn-btn" id="fan-laws">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\electrical power.webp" alt="">
+                <div>
+                    <h3>Power calculations</h3>
+                    <p>Calculate electrical power, brake horsepower (BHP), and Fan HP using US and Metric formulas. This
+                        tool simplifies complex power equations for quick results.</p>
+                    <button class="learn-btn" id="power-calculations">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\pump.jpeg" alt="">
+                <div>
+                    <h3>Pump Calculations & Laws</h3>
+                    <p>Quickly calculate pump performance by applying the pump Laws. Determine how changes in speed,
+                        flow, or pressure affect a pump's horsepower to optimize system efficiency.</p>
+                    
+                    <a href="{{ url_for('pump_calculation') }}">
+                        <button class="learn-btn" id="pump-laws">Learn More</button>
+                    </a>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\hydronic.jpg" alt="">
+                <div>
+                    <h3>Hydronic Calculation</h3>
+                    <p>Perform essential hydronic calculations to analyze fluid flow and pressure. This tool helps you
+                        determine Coil ΔP, flow rates (GPM), NPSH, and other key values.</p>
+                    <button class="learn-btn" id="hydronic-calculations">Learn More</button>
+                </div>
+            </div>
+            <div class="hvac-card">
+                <img width="300" height="172" id="card-img" src="\static\images\water side heat transfer.jpeg" alt="">
+                <div>
+                    <h3>Water Side Heat Transfer Calculations</h3>
+                    <p>This calculator handles key hydronic calculations for fluid systems. Easily determine Total Heat
+                        Transfer (BTU/hr), Flow Rate (GPM).</p>
+                    <button class="learn-btn" id="water-side-heat-transfer">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/js/index_js.js"></script>
+</body>
+
+</html>

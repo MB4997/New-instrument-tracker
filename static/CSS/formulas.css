@@ -1,0 +1,226 @@
+/* ---------- Base Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Myriad Pro', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ---------- Navbar / Header ---------- */
+.navbar {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.logo-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 30px;
+  background-color: rgba(255,255,255,0.98);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+/* keep logo size responsive */
+.logo {
+  height: clamp(60px, 8vw, 100px);
+  width: auto;
+  display: block;
+}
+
+/* sign out button */
+#sign-out-btn {
+  background-color: #3ea748;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+#sign-out-btn:hover { transform: translateY(-2px); background-color: #2f8d3a; color: #fff; }
+
+/* ---------- Background video + overlay + heading ---------- */
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+/* subtle dark layer so text is readable */
+.layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(5,55,84,0.65), rgba(5,55,84,0.45));
+  z-index: 1;
+}
+
+/* heading centered above everything */
+.heading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 28px 18px;
+}
+.heading > div > h1 {
+  font-size: clamp(28px, 4vw, 48px);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 1.05;
+}
+.heading > div > p {
+  font-size: clamp(14px, 1.6vw, 20px);
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.35;
+}
+
+/* ---------- Lower section (cards area) ---------- */
+.lower-section {
+  width: 100%;
+  min-height: fit-content;
+  background-image: url("/static/images/top-image.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 18px 60px;
+  position: relative;
+}
+
+/* add subtle overlay on lower section to increase contrast */
+.lower-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.82);
+  z-index: 0;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;              /* center and constrain width */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* keep your 12-col layout */
+  column-gap: 20px;
+  row-gap: 18px;
+  padding: 6px;
+}
+
+/* ---------- Card (hvac-card) ---------- */
+/* Use grid-column spans as you already used; remove fixed width to let grid control sizing */
+.hvac-card {
+  grid-column: span 3;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;              /* keep cards visually even */
+}
+
+/* image always full width and keep aspect */
+#card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* card content area */
+.hvac-card > div {
+  padding: 16px 18px 64px;       /* bottom padding leaves room for absolute button */
+  color: #093b54;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.hvac-card > div > h3 {
+  font-size: clamp(18px, 1.6vw, 20px);
+  color: #093b54;
+  margin-bottom: 6px;
+}
+.hvac-card > div > p {
+  text-align: left;
+  margin: 0;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.4;
+  color: #234e5e;
+}
+
+/* Learn button anchored to bottom-left inside card */
+.learn-btn {
+  background-color: #3ea748;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  cursor: pointer;
+  transition: transform .16s ease, background .16s ease;
+}
+.learn-btn:hover { transform: translateY(-2px); background-color: #2f8d3a; }
+
+/* ensure long text doesn't overflow horizontally */
+.hvac-card p, .hvac-card h3 { word-break: break-word; }
+
+/* ---------- Responsive breakpoints (keeps your grid spans logic) ---------- */
+
+/* Slightly smaller wide screens: prefer 4 columns per row */
+@media (max-width: 1500px) and (min-width: 1341px) {
+  .hvac-card { grid-column: span 4; }
+}
+
+/* medium screens: 2 cards per row */
+@media (max-width: 1340px) {
+  .hvac-card { grid-column: span 6; min-height: 300px; }
+}
+
+/* single column mobile */
+@media (max-width: 700px) {
+  .hvac-card { grid-column: span 12; min-height: auto; }
+  .container { padding: 6px; grid-template-columns: repeat(12, 1fr); }
+  .hvac-card > div { padding-bottom: 18px; }
+  .learn-btn { position: relative; left: auto; bottom: auto; margin-top: 12px; align-self: flex-start; }
+  .logo-section { padding: 8px 12px; }
+  .heading > div > h1 { font-size: 22px; }
+  .heading > div > p { font-size: 14px; max-width: 92%; }
+}
+
+/* small tablets */
+@media (max-width: 992px) {
+  .logo { height: 70px; }
+  .heading > div > h1 { font-size: 28px; }
+  .heading > div > p { font-size: 14px; }
+  #sign-out-btn { padding: 0.35rem 0.8rem; font-size: 0.95rem; }
+}

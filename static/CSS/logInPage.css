@@ -1,0 +1,201 @@
+/* ----------------------------------------
+   logInPage.css
+   Complete CSS for login page with autofill fixes
+   ---------------------------------------- */
+
+/* Base reset + sensible font */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Poppins", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f2f6f2;
+}
+
+/* Main page container: center content */
+.main-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Optional background image */
+  background-image: url('/static/images/top-image.webp');
+  background-size: cover;
+  background-position: center;
+  padding: 32px;
+}
+
+/* Card / login box */
+.login {
+  background-color: #398b41;
+  color: #fff;
+  padding: 48px;
+  border-radius: 24px;
+  width: min(92vw, 520px); /* responsive width */
+  box-shadow:
+    6px 8px 30px rgba(0,0,0,0.18),
+    0 -6px 20px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+/* Flash messages area (optional) */
+.flashes {
+  margin-bottom: 12px;
+}
+.flash {
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.flash-success { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.08); }
+.flash-danger  { background: rgba(255,0,0,0.12); border: 1px solid rgba(255,0,0,0.08); color: #fff; }
+.flash-info    { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); }
+
+/* Heading */
+.heading {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  letter-spacing: 0.2px;
+}
+
+/* Form layout */
+form {
+  width: 100%;
+}
+
+/* Input common styles */
+.input-prop {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 14px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(255,255,255,0.28);
+  color: white;
+  font-size: 18px;
+  line-height: 1.2;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Keep a visible indicator for keyboard users only */
+.input-prop:focus {
+  outline: none; /* remove default */
+  border-bottom: 2px solid rgba(255,255,255,0.95);
+}
+
+/* Accessible: show focus ring only for keyboard navigation */
+.input-prop:focus-visible {
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.06);
+  border-radius: 6px;
+}
+
+/* Placeholder style */
+.input-prop::placeholder {
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+}
+
+/* Password type */
+input[type="password"].input-prop {
+  letter-spacing: 0.08em;
+}
+
+/* Submit button */
+.submit {
+  display: inline-block;
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px 16px;
+  font-size: 18px;
+  background: white;
+  color: #398b41;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.submit:active { transform: translateY(1px); }
+.submit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(57,139,65,0.12);
+}
+
+/* Small screens tweak */
+@media (max-width: 420px) {
+  .login { padding: 22px; width: 94vw; border-radius: 14px; }
+  .heading { font-size: 22px; }
+  .input-prop { font-size: 16px; padding: 10px 12px; margin: 12px 0; }
+  .submit { font-size: 16px; padding: 10px 12px; border-radius: 10px; }
+}
+
+/* -------------------------------------------------------------
+   Autofill handling (Chrome / Edge / Safari - WebKit engines)
+   This prevents the yellow background / color reset and keeps
+   consistent appearance for inputs when the browser autofills.
+   ------------------------------------------------------------- */
+
+/* Target autofill states */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  /* remove default yellow bg by forcing an inset shadow */
+  -webkit-box-shadow: 0 0 0px 1000px rgba(57,139,65,0.0) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(57,139,65,0.0) inset !important;
+
+  /* keep text color consistent */
+  -webkit-text-fill-color: white !important;
+
+  /* prevent background transition flicker in Chrome */
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* For some Chromium versions: also reset internal selection styling */
+input:-internal-autofill-selected,
+textarea:-internal-autofill-selected {
+  -webkit-text-fill-color: white !important;
+  background-color: transparent !important;
+}
+
+/* If you want a subtle background when autofilled (alternative):
+   uncomment and tweak alpha to taste.
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.03) inset !important;
+  -webkit-text-fill-color: white !important;
+}
+*/
+
+/* -------------------------------------------------------------
+   Extra defensive rules (higher specificity) - use if needed
+   These ensure that styles are restored after mobile/JS toggles
+   ------------------------------------------------------------- */
+
+@media (min-width: 421px) {
+  /* restore desktop sizes explicitly */
+  .input-prop { font-size: 18px; color: white; border-bottom: 2px solid rgba(255,255,255,0.28); }
+  .heading { font-size: 28px; }
+}
+
+/* -------------------------------------------------------------
+   Helpful utilities you may want later
+   ------------------------------------------------------------- */
+.hidden { display: none !important; }
+.center { display:flex; align-items:center; justify-content:center; }

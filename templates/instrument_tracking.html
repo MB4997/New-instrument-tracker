@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrument Tracking</title>
+    <link rel="stylesheet" href="/static/CSS/instrument_tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main-page">
+        <nav>
+            <a style="text-decoration: none;" href="{{ url_for('home') }}">
+                <img class="logo" src="{{ url_for('static', filename='images/final_logo.png') }}" alt="image not found">
+            </a>
+
+            <div class="button-section">
+
+                <button id="sign-out-btn">Sign Out</button>
+            </div>
+        </nav>
+        <section>
+            <div class="buttons">
+                <button id="my-tool-kit" class="btn-prop-clicked">
+                    My Toolkit
+                </button>
+                <button id="add-instrument" class="btn-prop">
+                    Add Instrument
+                </button>
+                <button id="Instrument-status" class="btn-prop">
+                    Instrument Status
+                </button>
+                <button id="Onboard-new-instrument" class="btn-prop">
+                    Onboard New Instrument
+                </button>
+
+            </div>
+            <div class="main-containt">
+                <div id="my-instruments">
+                    <div id="spinner-container">
+                        <div class="spinner-grow text-success" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="add-instrument-section">
+                    <div class="add-new-instrument-card">
+                        <label for="add-instrument-type">Instrument Type:</label>
+
+                        <select id="add-instrument-type-list">
+                        </select>
+
+                        <label for="add-instrument-make">Instrument Make:</label>
+                        <select name="Instrument Name" id="add-instrument-make">
+
+                        </select>
+
+                        <label for="add-instrument-sr-no">Instrument Sr No:</label>
+                        <select name="Instrument Sr No" id="add-instrument-sr-no">
+
+                        </select>
+
+                        <label for="add-instrument-location">Location</label>
+                        <input type="text" id="add-instrument-location">
+                        <div id="calibration-section">
+
+                        </div>
+                        <div id="counter-add-instu" class="counter-prop">
+                            <p style="color: #1bb65f;">Adding Instrument in progress <span id="count-instu">0</span></p>
+                        </div>
+                        <button class="add-btn" id="add-button">Add Instrument</button>
+                    </div>
+
+                </div>
+                <div id="instrument-status-section">
+                    <div class="input-section">
+                        <label for="instrument-type-status">Instrument Type:</label>
+                        <select id="instrument-type-status" name="Instrument Type" required>
+                        </select>
+                        <button id="dawnload-sheet">Download Sheet</button>
+                    </div>
+                    <div id="status-card-section">
+                       
+                    </div>
+
+                </div>
+                <div id="onboard-new-instrument-section">
+
+                    <div class="Onboard-new-instrument-card">
+                        <label for="instrument-type">Instrument Type:</label>
+                        <input list="instrument-type-list-status" id="instrument-type" name="Instrument Type"
+                            placeholder="Select or type instrument">
+
+                        <datalist id="instrument-type-list-status">
+                            <option value="" disabled selected>Select Instrument Type</option>
+                            <option value="Ultrasonic Flow Meter">Ultrasonic Flow Meter</option>
+                            <option value="Hydronic Flow Meter">Hydronic Flow Meter</option>
+                            <option value="Pressure Gauge">Pressure Gauge</option>
+                            <option value="Clamp Meter">Clamp Meter</option>
+                            <option value="Tachometer">Tachometer</option>
+                            <option value="Sound Level Meter (dB Meter)">Sound Level Meter (dB Meter)</option>
+                            <option value="Micromanometer">Micromanometer</option>
+                            <option value="Vane Anemometer">Vane Anemometer</option>
+                            <option value="RTD (Resistance Temperature Detector)">RTD (Resistance Temperature Detector)
+                            </option>
+                            <option value="RH Logger">RH Logger</option>
+                            <option value="Infrared Temperature Gun">Infrared Temperature Gun</option>
+                        </datalist>
+
+
+                        <label for="instrument-make">Instrument Make:</label>
+                        <input type="text" id="instrument-make" name="Instrument Make">
+
+                        <label for="instrument-sr-no">Instrument Sr No:</label>
+                        <input type="text" id="instrument-sr-no" name="Instrument Sr. No.">
+
+                        <label for="calibartion-start-date">Calibration Start Date</label>
+                        <input type="date" id="calibration-start-date">
+
+                        <label for="calibartion-end-date">Calibration End Date</label>
+                        <input type="date" id="calibration-end-date">
+
+                        <label for="calibration-certificates-link">Calibration Certificate link</label>
+                        <input type="text" id="calibration-certificates-link">
+                        <div id="counter" class="counter-prop">
+                            <p style="color: #1bb65f;">Onbording in progress <span id="count">0</span></p>
+                        </div>
+                        <button class="submit-btn" id="submit-button">Onboard Instrument</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Inject logged-in username from Flask session
+        let session_user = "{{ session.get('name', '') }}";
+        console.log("Logged in as:", session_user);
+    </script>
+
+    <script src="/static/js/instrument_tracker.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/logInPage.css') }}">
+</head>
+<body>
+  <div class="main-page">
+    <div class="login">
+      <!-- show flash messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flashes">
+            {% for category, message in messages %}
+              <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <!-- POST to your login route -->
+      <form method="post" action="{{ url_for('login') }}">
+        <h1 class="heading">Login</h1>
+
+        <!-- name attributes are required so Flask can read request.form['username'] -->
+        <input name="username" type="text" placeholder="Username" class="input-prop" required>
+        <input name="password" type="password" placeholder="Password" class="input-prop" required>
+
+        <button type="submit" class="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

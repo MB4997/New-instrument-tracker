@@ -1,0 +1,625 @@
+/* ---------- Base Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  height: clamp(60px, 8vw, 80px);
+}
+
+#sign-out-btn {
+  background-color: #3ea748;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#sign-out-btn:hover {
+  background-color: #2f8d3a;
+  transform: scale(1.05);
+}
+
+/* ---------- Button Section ---------- */
+.button-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Page Section ---------- */
+section {
+  background-image: url("/static/images/top-image.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+/* ---------- Top Buttons ---------- */
+.buttons {
+  text-align: center;
+  padding-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-prop,
+.btn-prop-clicked {
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 18px);
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-prop {
+  background-color: white;
+  color: #3ea748;
+  border: 2px solid #3ea748;
+}
+
+.btn-prop:hover {
+  background-color: #e9f7eb;
+}
+
+.btn-prop-clicked {
+  background-color: #3ea748;
+  color: white;
+  border: 2px solid #3ea748;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+/* ---------- Instrument Cards Grid ---------- */
+#my-instruments {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* slightly wider cards */
+  gap: 24px;
+  padding: 10px 5%;
+  justify-content: center;
+}
+
+.no-data-text {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px dashed #94a3b8;
+  border-radius: 12px;
+  padding: 15px 25px;
+  color: #475569;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  margin-top: 40px;
+  grid-column: span 12;
+}
+
+
+/* ---------- Card Styles ---------- */
+
+.instrument-card {
+  background-color: white;
+  color: #3ea748;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-column: span 4;
+}
+
+.instrument-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* ✅ Fix for wrapping issue */
+.instrument-card .info-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 12px;
+}
+
+.instrument-card .info-row p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #3ea748;
+}
+
+.instrument-card .info-row span {
+  font-weight: 600;
+}
+
+/* ---------- Links and Buttons ---------- */
+.instrument-card a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #3ea748;
+  font-size: 0.9em;
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.remove-instrument {
+  background-color: #3ea748;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.remove-instrument:hover {
+  background-color: #2f8d3a;
+  transform: scale(1.05);
+}
+
+#add-instrument-section {
+  display: none;
+  padding: 20px;
+}
+.add-new-instrument-card {
+  background-color: #ffffff;
+  display: flex;  
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  border-top: 5px solid #1bb65f; /* matches your green theme */
+  transition: all 0.3s ease-in-out;
+}
+
+
+.add-new-instrument-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Labels */
+.add-new-instrument-card label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1c4b27;
+  margin-bottom: 4px;
+}
+
+/* Inputs */
+.add-new-instrument-card input[type="text"],
+.add-new-instrument-card input[list]
+{
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add-new-instrument-card select {
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input hover/focus */
+.add-new-instrument-card input:hover {
+  border-color: #1bb65f;
+}
+
+.add-new-instrument-card input:focus {
+  border-color: #1bb65f;
+  box-shadow: 0 0 6px rgba(27, 182, 95, 0.2);
+}
+
+/* Placeholder style */
+.add-new-instrument-card input::placeholder {
+  color: #888;
+}
+
+/* Add spacing between label + input */
+.add-new-instrument-card label + input {
+  margin-top: 4px;
+}
+
+.add-btn {
+  background-color: #1bb65f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+.add-btn:hover {
+  background-color: #159b50;
+  transform: translateY(-1px);
+}
+
+
+
+
+#onboard-new-instrument-section {
+  display: none;
+}
+
+/* Main card styling */
+.Onboard-new-instrument-card {
+  background-color: #ffffff;
+  display: flex;  
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 32px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  border-top: 5px solid #1bb65f; /* matches your green theme */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Slight hover effect for interactivity */
+.Onboard-new-instrument-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Labels */
+.Onboard-new-instrument-card label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1c4b27;
+  margin-bottom: 4px;
+}
+
+/* Inputs */
+.Onboard-new-instrument-card input[type="text"],
+.Onboard-new-instrument-card input[list],
+.Onboard-new-instrument-card input[type="date"] {
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Input hover/focus */
+.Onboard-new-instrument-card input:hover {
+  border-color: #1bb65f;
+}
+
+.Onboard-new-instrument-card input:focus {
+  border-color: #1bb65f;
+  box-shadow: 0 0 6px rgba(27, 182, 95, 0.2);
+}
+
+/* Placeholder style */
+.Onboard-new-instrument-card input::placeholder {
+  color: #888;
+}
+
+/* Add spacing between label + input */
+.Onboard-new-instrument-card label + input {
+  margin-top: 4px;
+}
+
+.submit-btn {
+  background-color: #1bb65f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background-color: #159b50;
+  transform: translateY(-1px);
+}
+
+#instrument-status-section {
+  display: none;
+}
+
+#instrument-status-section div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.instrument-card-status {
+  display: flex;
+  flex-direction: column;
+
+  /* place items at the top-left of the card */
+  align-items: center;    /* horizontal (left) */
+  justify-content: center;/* vertical (top) */
+  margin-top: 0;
+  background-color: white;
+  padding: 0 20px;
+  color: #3ea748;
+  border-radius: 15px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instrument-card-status p {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.instrument-card-status a {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  color: #3ea748;
+}
+
+.instrument-card-status a:hover {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  color: blue;
+}
+
+
+
+
+/*-----------instrument Status--------------------*/
+
+#instrument-status-section {
+  display: none;
+  grid-template-columns: repeat(12, 1fr); /* slightly wider cards */
+  gap: 24px;
+  padding: 10px 5%;
+  justify-content: center;
+}
+
+.input-section {
+  grid-column: span 12;
+  font-weight: bold;
+}
+
+.input-section > input {
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 20%;
+  box-sizing: border-box;
+}
+
+.input-section > input:hover {
+  border-color: #1bb65f;
+}
+
+#dawnload-sheet {
+  background-color: #179a50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease-in-out, transform 0.1s;
+}
+
+#status-card-section {
+  display: flex;
+  grid-column: span 12;
+  gap: 10px;
+  flex-wrap: wrap;/* center the cards themselves */
+  margin-top: 0px;
+}
+
+.instrument-card-status {
+  background-color: white;
+  padding: 20px;
+  color: #3ea748;
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+  justify-content: end;
+  align-items: end;
+  align-content: end;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Onboard-new-instrument-card {
+    max-width: 90%;
+    padding: 20px;
+    gap: 14px;
+  }
+  .Onboard-new-instrument-card label {
+    font-size: 0.9rem;
+  }
+
+  .input-section > input {
+    width: 80%;
+  }
+}
+
+
+/* ---------- Responsive Adjustments ---------- */
+@media screen and (max-width: 1050px) {
+  
+
+  #sign-out-btn {
+    width: 100%;
+  }
+
+  section {
+    padding: 1rem 0;
+  }
+
+  .instrument-card .info-row {
+    flex-wrap: wrap; /* allow wrapping only on smaller screens */
+    white-space: normal;
+  }
+
+  .instrument-card {
+  background-color: white;
+  color: #3ea748;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-column: span 6;
+}
+
+}
+
+
+@media screen and (max-width: 700px) {
+  
+
+  #sign-out-btn {
+    width: 100%;
+  }
+
+  section {
+    padding: 1rem 0;
+  }
+
+  .instrument-card .info-row {
+    flex-wrap: wrap; /* allow wrapping only on smaller screens */
+    white-space: normal;
+  }
+
+  .instrument-card {
+  background-color: white;
+  color: #3ea748;
+  border-radius: 12px;
+  padding: 20px;
+  font-size: clamp(16px, 1.5vw, 20px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-column: span 12;
+}
+
+}
+
+@media screen and (max-width: 480px) {
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-prop,
+  .btn-prop-clicked {
+    width: 90%;
+  }
+
+  .my-instruments {
+    padding: 20px;
+  }
+
+  #instrument-status-section div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  }
+}
+
+
+#spinner-container {
+  display: flex;
+  grid-column: span 12;
+  height: 40Vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-prop {
+  display: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.counter-prop-show {
+  display: block;
+  opacity: 1;
+}
+
+
+
+
